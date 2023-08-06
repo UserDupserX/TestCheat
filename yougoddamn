@@ -1,0 +1,341 @@
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
+
+local Window = Rayfield:CreateWindow({
+   Name = "😀 Rad Hub",
+   LoadingTitle = "Welcome in Rad Hub",
+   LoadingSubtitle = "Rad Hub is a hub for games to cheat easy!",
+   ConfigurationSaving = {
+      Enabled = true,
+      FolderName = "Rad Hub", -- Create a custom folder for your hub/game
+      FileName = "RadHub"
+   },
+   Discord = {
+      Enabled = true,
+      Invite = "yc7wQr3XD2", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ABCD would be ABCD
+      RememberJoins = true -- Set this to false to make them join the discord every time they load it up
+   },
+   KeySystem = true, -- Set this to true to use our key system
+   KeySettings = {
+      Title = "Key is required!",
+      Subtitle = "To get key you gonna join to our Discord Server!",
+      Note = "Discord: https://discord.gg/yc7wQr3XD2",
+      FileName = "somethingcool", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
+      SaveKey = false, -- The user's key will be saved, but if you change the key, they will be unable to use your script
+      GrabKeyFromSite = true, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
+      Key = {"https://pastebin.com/raw/mc4Dt6bm"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
+   }
+})
+
+Rayfield:Notify({
+   Title = "Rad Hub Loaded!",
+   Content = "Rad Hub has been loaded to game!",
+   Duration = 5,
+   Image = nil,
+   Actions = { -- Notification Buttons
+      Ignore = {
+         Name = "Okay!",
+         Callback = function()
+      end
+   },
+},
+})
+
+local MainTab = Window:CreateTab("🏠 Home",nil) -- Title, Image
+local MainSection = MainTab:CreateSection("Main")
+
+-- Button: Discord Invite
+local DiscordInvite = MainTab:CreateButton({
+   Name = "Discord Invite",
+   Callback = function()
+   
+Rayfield:Notify({
+   Title = "Rad Studios - INVITE",
+   Content = "Link: https://discord.gg/yc7wQr3XD2",
+   Duration = 5,
+   Image = nil,
+   Actions = { -- Notification Buttons
+      Ignore = {
+         Name = "Okay!",
+         Callback = function()
+      end
+   },
+},
+})
+
+   end,
+})
+
+local UpdateTab = Window:CreateTab("🔔 Updates",nil) -- Title, Image
+local UpdateLog = UpdateTab:CreateSection("Update (1)")
+
+local UpdateLog1 = UpdateTab:CreateButton({
+   Name = "[+] Released Rad Hub",
+   Callback = function()
+   warn("TIP: Why should u click in Update Log Button? DogDoggyDoggo!")
+   end,
+})
+local UpdateLog2 = UpdateTab:CreateButton({
+   Name = "Coming Soon Much More!",
+   Callback = function()
+   warn("TIP: Why should u click in Update Log Button? DogDoggyDoggo!")
+   end,
+})
+
+local Tab2 = Window:CreateTab("😀 Player",nil) -- Title, Image
+local Tab2Section = Tab2:CreateSection("Main")
+
+-- Toggle: Free WalkSpeed
+local FreeWalkSpeed = Tab2:CreateToggle({
+   Name = "Free Walkspeed",
+   CurrentValue = false,
+   Flag = "speed", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+
+   if Value == false then
+         local v0 = game.Players.LocalPlayer
+   v0.Character.Humanoid.WalkSpeed = 16
+   end
+
+   if Value == true then
+         local v0 = game.Players.LocalPlayer
+   v0.Character.Humanoid.WalkSpeed = 75
+   end
+
+
+   end,
+})
+
+-- Toggle: Free JumpPower
+local FreeJumpPower = Tab2:CreateToggle({
+   Name = "Free JumpPower",
+   CurrentValue = false,
+   Flag = "jump", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+
+   if Value == false then
+   local v0 = game.Players.LocalPlayer
+   v0.Character.Humanoid.JumpPower = 50
+   end
+
+   if Value == true then
+   local v0 = game.Players.LocalPlayer
+   v0.Character.Humanoid.JumpPower = 125
+   end
+
+
+   end,
+})
+
+-- Slider" Change WalkSpeed
+local Slider = Tab2:CreateSlider({
+   Name = "Change WalkSpeed",
+   Range = {0,999},
+   Increment = 1,
+   Suffix = "Speed",
+   CurrentValue = 16,
+   Flag = "changespeed1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+   local v0 = game.Players.LocalPlayer
+   v0.Character.Humanoid.WalkSpeed = (Value)
+   end,
+})
+
+-- Slider" Change JumpPower
+local Slider = Tab2:CreateSlider({
+   Name = "Change JumpPower",
+   Range = {0,999},
+   Increment = 1,
+   Suffix = "Jump",
+   CurrentValue = 50,
+   Flag = "changejump1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+   local v0 = game.Players.LocalPlayer
+   v0.Character.Humanoid.JumpPower = (Value)
+   end,
+})
+
+-- Button: KYS
+local KYS = Tab2:CreateButton({
+   Name = "KYS",
+   Callback = function()
+   local v0 = game.Players.LocalPlayer
+   v0.Character.Humanoid.Health = 0
+   end,
+})
+
+-- Rebirth Champions X shit
+getgenv().ClickingFarm = false;
+getgenv().Rebirth1 = false;
+getgenv().Rebirth2 = false;
+getgenv().Rebirth3 = false;
+getgenv().Egg1 = false;
+getgenv().Egg3 = false;
+
+local Tab3 = Window:CreateTab("♻️ Rebirth Champions X",nil) -- Title, Image
+local Tab3Section = Tab3:CreateSection("Main")
+
+-- Toggle: AutoClicker
+local AutoClicker1 = Tab3:CreateToggle({
+   Name = "Auto-Clicker",
+   CurrentValue = false,
+   Flag = "clicker1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+   getgenv().ClickingFarm = (Value);
+   while wait() do
+    if getgenv().ClickingFarm == true then
+        wait(0.0000000001)
+    game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("Click3"):FireServer()
+    end
+   end
+   end,
+})
+
+-- Toggle: Rebirth 1
+local Reb1 = Tab3:CreateToggle({
+   Name = "Auto-Rebirth (1 Rebirth)",
+   CurrentValue = false,
+   Flag = "reb1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+   getgenv().Rebirth1 = (Value);
+   while wait() do
+    if getgenv().Rebirth1 == true then
+        wait(0.0000000001)
+        local args = {
+    [1] = 1
+}
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("Rebirth"):FireServer(unpack(args))
+    end
+   end
+   end,
+})
+
+-- Toggle: Rebirth 2
+local Reb2 = Tab3:CreateToggle({
+   Name = "Auto-Rebirth (5 Rebirths)",
+   CurrentValue = false,
+   Flag = "reb2", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+   getgenv().Rebirth2 = (Value);
+   while wait() do
+    if getgenv().Rebirth2 == true then
+        wait(0.0000000001)
+        local args = {
+    [1] = 2
+}
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("Rebirth"):FireServer(unpack(args))
+    end
+   end
+   end,
+})
+
+-- Toggle: Rebirth 3
+local Reb3 = Tab3:CreateToggle({
+   Name = "Auto-Rebirth (10 Rebirths)",
+   CurrentValue = false,
+   Flag = "reb3", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+   getgenv().Rebirth3 = (Value);
+   while wait() do
+    if getgenv().Rebirth3 == true then
+        wait(0.0000000001)
+        local args = {
+    [1] = 3
+}
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("Rebirth"):FireServer(unpack(args))
+    end
+   end
+   end,
+})
+
+-- Toggle: Egg Names
+local Egg1 = Tab3:CreateToggle({
+   Name = "Get-Egg-Names",
+   CurrentValue = false,
+   Flag = "typeeggs", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+   Rayfield:Notify({
+   Title = "Rad Hub - CONSOLE",
+   Content = "Check Out Console For Eggs Name",
+   Duration = 5,
+   Image = nil,
+   Actions = { -- Notification Buttons
+      Ignore = {
+         Name = "Okay!",
+         Callback = function()
+      end
+   },
+},
+})
+
+local v0 = game.ReplicatedStorage.Assets.Eggs
+warn("------------------- EGGS FUCKER -------------------")
+warn("------------------- EGGS FUCKER -------------------")
+warn("------------------- EGGS FUCKER -------------------")
+for i,v in pairs (v0:GetChildren()) do
+warn(v)
+end
+warn("------------------- EGGS FUCKER -------------------")
+warn("------------------- EGGS FUCKER -------------------")
+warn("------------------- EGGS FUCKER -------------------")
+
+   end,
+})
+
+
+
+-- Egg name 
+local NAME = "NONE"
+local Egg1Name = Tab3:CreateInput({
+   Name = "Egg Name",
+   PlaceholderText = "Put Egg Name Here",
+   RemoveTextAfterFocusLost = false,
+   Callback = function(Text)
+   NAME = Text
+   warn(NAME)
+   end,
+})
+
+-- Toggle: Egg 1
+local Egg1 = Tab3:CreateToggle({
+   Name = "Auto-Egg-x1",
+   CurrentValue = false,
+   Flag = "egg1x1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+   getgenv().Egg1 = (Value);
+   while wait() do
+    if getgenv().Egg1 == true then
+        wait(0.0000000001)
+ local args = {
+    [1] = NAME,
+    [2] = "Single"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Functions"):WaitForChild("Unbox"):InvokeServer(unpack(args))
+
+    end
+   end
+   end,
+})
+
+-- Toggle: Egg 3
+local Egg3 = Tab3:CreateToggle({
+   Name = "Auto-Egg-x3",
+   CurrentValue = false,
+   Flag = "egg1x3", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+   getgenv().Egg3 = (Value);
+   while wait() do
+    if getgenv().Egg3 == true then
+        wait(0.0000000001)
+ local args = {
+    [1] = NAME,
+    [2] = "Triple"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Functions"):WaitForChild("Unbox"):InvokeServer(unpack(args))
+
+    end
+   end
+   end,
+})
